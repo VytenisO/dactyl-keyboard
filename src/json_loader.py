@@ -4,6 +4,7 @@ import os
 
 def load_json(filepath, save_path='../things'):
     with open('./src/run_config.json') as fid:
+        print("opened run_config.json")
         main_json = json.load(fid)
 
     with open(filepath, mode='r') as fid:
@@ -26,6 +27,3 @@ def load_json(filepath, save_path='../things'):
         main_json[key] = first_data[key]
 
     return main_json
-
-
-
