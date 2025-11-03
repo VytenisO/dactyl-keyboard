@@ -1,6 +1,6 @@
 {
     "ENGINE": "solid",
-    "save_dir": ".",
+    "save_dir": "things",
     "config_name": "DM",
     "save_name": "",
     "logo_file": null,

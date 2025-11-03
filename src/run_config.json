@@ -1,7 +1,7 @@
 {
   "ENGINE": "cadquery",
   "branch": "",
-  "save_dir": "../things",
+  "save_dir": "things",
   "overrides": "",
   "save_name": "",
   "config_name": "hot_xiao_4x5",
