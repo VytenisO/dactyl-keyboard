@@ -144,7 +144,7 @@
     17.5
   ],
   "fixed_tenting": 0.0,
-  "plate_style": "HOLE",
+  "plate_style": "HS_NUB",
   "hole_keyswitch_height": 14.0,
   "hole_keyswitch_width": 14.0,
   "nub_keyswitch_height": 14.4,
