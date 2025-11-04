@@ -173,7 +173,7 @@
   "oled_translation_offset": [ 0, 0, 4 ],
   "oled_rotation_offset": [ 0, 0, 0 ],
   "web_thickness": 4.0,
-  "post_size": 0.1,
+  "post_size": 1.0,
   "post_adj": 0,
   "screws_offset": "INSIDE",
   "magnet_bottom": true,
