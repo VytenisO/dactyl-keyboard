@@ -51,21 +51,21 @@ class Minithicc3(MinidoxCluster):
     def tl_place(self, shape):
         """Position the MIDDLE thumb key (for right hand)."""
         shape = rotate(shape, [14, -50, 20])  # Adjust these values for angle
-        shape = translate(shape, [-41, -17, -14])  # Adjust for position
+        shape = translate(shape, [-37, -16, -17])  # Adjust for position
         shape = self.thumb_place(shape)
         return shape
 
     def tr_place(self, shape):
         """Position the RIGHTMOST thumb key (for right hand)."""
-        shape = rotate(shape, [20, -50, 10])  # Adjust these values for angle
-        shape = translate(shape, [-26, -10, 4])  # Adjust for position
+        shape = rotate(shape, [20, -45, 10])  # Adjust these values for angle
+        shape = translate(shape, [-21, -10, -6])  # Adjust for position
         shape = self.thumb_place(shape)
         return shape
 
     def ml_place(self, shape):
         """Position the LEFTMOST thumb key (for right hand)."""
-        shape = rotate(shape, [1, -85, 40])  # Adjust these values for angle
-        shape = translate(shape, [-46, -24, -29])  # Adjust for position
+        shape = rotate(shape, [1, -65, 40])  # Adjust these values for angle
+        shape = translate(shape, [-46, -22, -32])  # Adjust for position
         shape = self.thumb_place(shape)
         return shape
 
