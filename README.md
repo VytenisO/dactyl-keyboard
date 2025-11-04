@@ -14,6 +14,13 @@ python src/dactyl_manuform.py
 
 Run this from the repository root. Generated files will be placed in the `things/` directory.
 
+## My Build
+
+- **Controller:** Seeeduino XIAO
+- **Controller Holder:** External Elite-C TRRS holder STL (close enough fit, may remove TRRS hole later if bothered)
+- **Switches:** Hotswap sockets (Kailh/Gateron)
+- **Bottom Plate:** Heat-set M3 screw inserts
+
 ## Configuration
 
 Edit `src/run_config.json` to configure the keyboard design. This is where you'll set parameters like:
