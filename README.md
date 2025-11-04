@@ -22,6 +22,7 @@ Edit `src/run_config.json` to configure the keyboard design. This is where you'l
 - Plate style (standard, hotswap, etc.)
 - Curvature and tenting
 - Engine type (`"solid"` for OpenSCAD - recommended, `"cadquery"` for STEP/STL - bloated)
+- `"export_outline": true` - Export 2D bottom outline as DXF for custom bottom plate designs (off by default because it's slow and you probably don't need it every iteration)
 
 ## Installation
 

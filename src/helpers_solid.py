@@ -156,8 +156,14 @@ def export_stl(shape, fname):
 
 
 def export_dxf(shape, fname):
-    print("NO DXF EXPORT FOR SOLID".format(fname))
-    pass
+    print("EXPORTING DXF TO {}".format(fname))
+    scad_file = fname + ".scad"
+    dxf_file = fname + ".dxf"
+    sl.scad_render_to_file(shape, scad_file)
+    try:
+        run(["openscad", "-o", dxf_file, scad_file])
+    except:
+        print("Warning: Could not auto-export DXF. Open {} in OpenSCAD and export manually.".format(scad_file))
 
 
 def render_samples(override_name, num_cols, dir_path):

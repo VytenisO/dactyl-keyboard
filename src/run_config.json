@@ -1,5 +1,5 @@
 {
-  "ENGINE": "cadquery",
+  "ENGINE": "solid",
   "branch": "",
   "save_dir": "things",
   "overrides": "",
@@ -8,6 +8,7 @@
   "logo_file": null,
   "show_caps": false,
   "show_pcbs": false,
+  "export_outline": false,
   "color": "yellow",
   "resin": false,
   "tilt_resin": true,

@@ -2629,6 +2629,34 @@ def make_dactyl():
         # rest = union([rest, plate])
         return rest
 
+    def baseplate_outline(walls, side='right'):
+        if ENGINE == 'cadquery':
+            shape = union([walls, *screw_insert_outers(side=side)])
+            shape = translate(shape, (0, 0, -0.0001))
+            square = cq.Workplane('XY').rect(1000, 1000)
+            for wire in square.wires().objects:
+                plane = cq.Workplane('XY').add(cq.Face.makeFromWires(wire))
+            shape = intersect(shape, plane)
+            outside = shape.vertices(cq.DirectionMinMaxSelector(cq.Vector(1, 0, 0), True)).objects[0]
+            base_wires = shape.wires().objects
+            outer_wire = None
+            for wire in base_wires:
+                for vert in wire.Vertices():
+                    if vert.toTuple() == outside.toTuple():
+                        outer_wire = wire
+                        break
+                if outer_wire:
+                    break
+            return cq.Workplane('XY').add(cq.Face.makeFromWires(outer_wire))
+        else:
+            shape = union([walls, *screw_insert_outers(side=side)])
+            tool = translate(union(screw_insert_screw_holes(side=side)), [0, 0, -10])
+            base = box(1000, 1000, .01)
+            shape = shape - tool
+            shape = intersect(shape, base)
+            shape = translate(shape, [0, 0, -0.001])
+            return sl.projection(cut=True)(shape)
+
     # NEEDS TO BE SPECIAL FOR CADQUERY
     def baseplate(walls, wedge_angle=None, side='right'):
         global logo_file
@@ -2833,11 +2861,14 @@ def make_dactyl():
 
         # base = union([base, rest])
         export_file(shape=base, fname=path.join(save_path, right_name + r"_PLATE"))
+        if export_outline:
+            outline_r = baseplate_outline(walls_r, side='right')
+            if outline_r:
+                export_dxf(shape=outline_r, fname=path.join(save_path, right_name + r"_OUTLINE"))
         export_file(shape=rest_r, fname=path.join(save_path, right_name + r"_WRIST_REST"))
         if quickly:
             print(">>>>>  QUICK RENDER: Only rendering a the right side and bottom plate.")
             return
-        # export_dxf(shape=base, fname=path.join(save_path, right_name + r"_PLATE"))
 
         # rest = wrist_rest(mod_r, base, side="right")
         #
@@ -2854,12 +2885,15 @@ def make_dactyl():
 
         base_l = baseplate(walls_l, side='left')
         rest_l = mirror(wrist_rest(mod_l, base_l, side="left"), 'YZ')
+        outline_l = baseplate_outline(walls_l, side='left')
         base_l = mirror(base_l, "YZ")
-
-
+        if outline_l:
+            outline_l = mirror(outline_l, "YZ")
 
         export_file(shape=base_l, fname=path.join(save_path, left_name + r"_PLATE"))
-        # export_dxf(shape=base_l, fname=path.join(save_path, left_name + r"_PLATE"))
+        if export_outline:
+            if outline_l:
+                export_dxf(shape=outline_l, fname=path.join(save_path, left_name + r"_OUTLINE"))
         export_file(shape=rest_l, fname=path.join(save_path, left_name + r"_WRIST_REST"))
         # else:
         #     export_file(shape=mirror(mod_r, 'YZ'), fname=path.join(save_path, config_name + r"_left"))
