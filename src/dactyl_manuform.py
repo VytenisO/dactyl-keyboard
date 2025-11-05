@@ -2338,7 +2338,7 @@ def make_dactyl():
         else:
             shape = union((
                 shape,
-                translate(sphere(top_radius), (0, 0,  (new_height / 2))),
+                translate(sphere(top_radius), (0, 0, 0)),
             ))
         return shape
 
