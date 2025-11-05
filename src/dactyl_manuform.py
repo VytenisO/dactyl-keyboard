@@ -1295,7 +1295,6 @@ def make_dactyl():
 
         hulls.append(place2(post2))
         hulls.append(place2(translate(post2, wall_locate1(dx2, dy2))))
-        hulls.append(place2(translate(post2, wall_locate1(dx2, dy2))))
         hulls.append(place2(translate(post2, wall_locate2(dx2, dy2))))
         hulls.append(place2(translate(post2, wall_locate3(dx2, dy2, back))))
         shape1 = hull_from_shapes(hulls)
