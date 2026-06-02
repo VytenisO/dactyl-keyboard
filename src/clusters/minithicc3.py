@@ -58,7 +58,7 @@ class Minithicc3(MinidoxCluster):
     def tr_place(self, shape):
         """Position the RIGHTMOST thumb key (for right hand)."""
         shape = rotate(shape, [20, -45, 10])  # Adjust these values for angle
-        shape = translate(shape, [-21, -10, -6])  # Adjust for position
+        shape = translate(shape, [-20, -9, -2])  # Adjust for position
         shape = self.thumb_place(shape)
         return shape
 
